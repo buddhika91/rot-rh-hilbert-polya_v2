@@ -12,9 +12,9 @@ correction is **not** enough to repair the Hilbert–Pólya parity obstruction.
 The successful finite mechanism is the ROT self-dual, parity-selective
 completion
 
-```math
+
 W_{\mathrm{ROT}} = W_L + \Pi_- C_{2,L}\Pi_-
-```
+
 
 where
 
