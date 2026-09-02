@@ -12,15 +12,21 @@ correction is **not** enough to repair the Hilbert–Pólya parity obstruction.
 The successful finite mechanism is the ROT self-dual, parity-selective
 completion
 
-`W_ROT = W_L + Pi_- C_(2,L) Pi_-`,
+```math
+W_{\mathrm{ROT}} = W_L + \Pi_- C_{2,L}\Pi_-
+```
 
 where
 
-`Pi_- = (I-Gamma)/2`
+```math
+\Pi_- = \frac{I-\Gamma}{2}
+```
 
 projects onto the spatial-odd sector and
 
-`C_(2,L) = sum_(p<e^L) ((log p)^2/p)(2I-2 Re T_(2 log p)) >= 0`
+```math
+C_{2,L}=\sum_{p<e^L}\frac{(\log p)^2}{p}\left(2I-2\operatorname{Re}T_{2\log p}\right)\ge 0
+```
 
 is the connected double-winding thermofield Ward energy.
 
@@ -91,11 +97,15 @@ The Hilbert–Pólya program seeks a self-adjoint operator `H` whose real spectr
 encodes the imaginary parts of the nontrivial zeros of the Riemann zeta
 function. In an ideal realization,
 
-`spec(H) = {gamma : xi(1/2+i gamma)=0}`,
+```math
+\operatorname{spec}(H)=\left\{\gamma:\xi\!\left(\frac12+i\gamma\right)=0\right\}
+```
 
 and an appropriately regularized spectral determinant satisfies
 
-`det_reg(H-E) = N(E) Xi(E)`,
+```math
+\det_{\mathrm{reg}}(H-E)=N(E)\,\Xi(E)
+```
 
 where `N(E)` is explicit and nonzero in the relevant domain.
 
@@ -103,7 +113,9 @@ Self-adjointness would force the spectral parameter `E` to be real. If the
 determinant identity were exact and exhaustive, the corresponding zeta zeros
 would lie on
 
-`Re(s)=1/2`.
+```math
+\operatorname{Re}(s)=\frac12
+```
 
 The difficulty is not producing a finite matrix whose eigenvalues approximate
 known zeros. The difficult requirements are simultaneous:
@@ -127,27 +139,39 @@ geometry, and an observer-boundary Ward mechanism.
 
 Fix a symmetric observation window
 
-`x in [-L,L]`
+```math
+x\in[-L,L]
+```
 
 and a Fourier–Galerkin depth `M`. The basis labels are
 
-`k=-M,...,M`,
+```math
+k=-M,\ldots,M
+```
 
 with frequencies
 
-`omega_k = pi k/L`.
+```math
+\omega_k=\frac{\pi k}{L}
+```
 
 The normalized window basis may be written as
 
-`phi_k(x) = exp(i omega_k x)/sqrt(2L)`.
+```math
+\phi_k(x)=\frac{e^{i\omega_k x}}{\sqrt{2L}}
+```
 
 Its real-axis transform in the code is
 
-`F_k(r) = sqrt(2L) sinc((r+omega_k)L/pi)`.
+```math
+F_k(r)=\sqrt{2L}\,\operatorname{sinc}\!\left(\frac{(r+\omega_k)L}{\pi}\right)
+```
 
 For complex spectral argument `z`, the same transform is evaluated by
 
-`F_k(z) = (2 sinh(i(omega_k+z)L))/(i(omega_k+z)sqrt(2L))`,
+```math
+F_k(z)=\frac{2\sinh\!\left(i(\omega_k+z)L\right)}{i(\omega_k+z)\sqrt{2L}}
+```
 
 with the removable zero handled explicitly.
 
@@ -155,29 +179,41 @@ with the removable zero handled explicitly.
 
 The completed-zeta architecture carries distinguished pole directions at
 
-`z=+i/2`
+```math
+z=+\frac{i}{2}
+```
 
 and
 
-`z=-i/2`.
+```math
+z=-\frac{i}{2}
+```
 
 The finite physical space is restricted by
 
-`hat f(+i/2)=0`,
+```math
+\widehat f\!\left(+\frac{i}{2}\right)=0
+```
 
-`hat f(-i/2)=0`.
+```math
+\widehat f\!\left(-\frac{i}{2}\right)=0
+```
 
 If `C_L` is the two-row matrix of these evaluations, the code computes an
 orthonormal null-space matrix `Z_L` satisfying
 
-`C_L Z_L = 0`.
+```math
+C_L Z_L=0
+```
 
 Every archimedean, arithmetic, reflection, translation, and Ward operator is
 then compressed to this pole-neutral space.
 
 For `2M+1` initial Fourier modes, the generic pole-neutral dimension is
 
-`dim(E_(L,M)) = 2M-1`.
+```math
+\dim E_{L,M}=2M-1
+```
 
 This projection is structural. It is not fitted to zeros and it is not a
 post-processing removal of unwanted eigenvalues.
@@ -186,17 +222,23 @@ post-processing removal of unwanted eigenvalues.
 
 The archimedean symbol is
 
-`Omega(r) = Re psi(1/4+i r/2)-log pi`,
+```math
+\Omega(r)=\operatorname{Re}\psi\!\left(\frac14+\frac{ir}{2}\right)-\log\pi
+```
 
 where `psi` is the digamma function.
 
 Using Gauss–Legendre quadrature, the uncompressed Galerkin matrix is
 
-`G_(jk) = (1/(2pi)) int Omega(r) conjugate(F_j(r)) F_k(r) dr`.
+```math
+G_{jk}=\frac{1}{2\pi}\int \Omega(r)\,\overline{F_j(r)}F_k(r)\,dr
+```
 
 The pole-neutral archimedean block is
 
-`G_L^phys = Z_L^* G_L Z_L`.
+```math
+G_L^{\mathrm{phys}}=Z_L^{*}G_LZ_L
+```
 
 The registered v643 calculation uses
 
@@ -211,69 +253,101 @@ and
 The script constructs every prime-power atom `n=p^m` below the active
 finite-window threshold and assigns the von Mangoldt weight
 
-`Lambda(n)=log p`.
+```math
+\Lambda(n)=\log p\qquad(n=p^m)
+```
 
 The arithmetic coefficient is
 
-`a_n = Lambda(n)/sqrt(n)`.
+```math
+a_n=\frac{\Lambda(n)}{\sqrt n}
+```
 
 For translation distance
 
-`a=log n`,
+```math
+a=\log n
+```
 
 let `R_a` denote the finite-window correlation matrix. Only atoms satisfying
 
-`log n < 2L`
+```math
+\log n<2L
+```
 
 can overlap the window and contribute.
 
 The arithmetic block is
 
-`Q_L = -2 sum_(log n<2L) (Lambda(n)/sqrt(n)) Z_L^* R_(log n) Z_L`.
+```math
+Q_L=-2\sum_{\log n<2L}\frac{\Lambda(n)}{\sqrt n}\,Z_L^{*}R_{\log n}Z_L
+```
 
 The baseline pole-neutral arithmetic Weil metric is
 
-`W_L = G_L^phys + Q_L`.
+```math
+W_L=G_L^{\mathrm{phys}}+Q_L
+```
 
 The implementation explicitly Hermitianizes every physical matrix:
 
-`H <- (H+H^*)/2`.
+```math
+H\longleftarrow\frac{H+H^{*}}{2}
+```
 
 ## 5. Reflection parity
 
 Spatial reflection acts on the Fourier basis by
 
-`Gamma phi_k = phi_(-k)`.
+```math
+\Gamma\phi_k=\phi_{-k}
+```
 
 After pole-neutral compression,
 
-`Gamma_L = Z_L^* Gamma Z_L`.
+```math
+\Gamma_L=Z_L^{*}\Gamma Z_L
+```
 
 Numerically, the release verifies
 
-`Gamma_L^2 = I`
+```math
+\Gamma_L^2=I
+```
 
 to floating-point tolerance.
 
 The parity projectors are
 
-`Pi_+ = (I+Gamma_L)/2`,
+```math
+\Pi_+=\frac{I+\Gamma_L}{2}
+```
 
-`Pi_- = (I-Gamma_L)/2`.
+```math
+\Pi_-=\frac{I-\Gamma_L}{2}
+```
 
 For any Hermitian metric `W`, define
 
-`epsilon_+(W) = lambda_min(W|E_+)`,
+```math
+\epsilon_+(W)=\lambda_{\min}\!\left(W\vert_{E_+}\right)
+```
 
-`epsilon_-(W) = lambda_min(W|E_-)`,
+```math
+\epsilon_-(W)=\lambda_{\min}\!\left(W\vert_{E_-}\right)
+```
 
 and
 
-`Delta(W) = epsilon_-(W)-epsilon_+(W)`.
+```math
+\Delta(W)=\epsilon_-(W)-\epsilon_+(W)
+```
 
 The sign convention is important:
 
-`Delta(W)>0`
+```math
+\Delta(W)>0
+```
 
 means the odd sector lies above the even ground state.
 
@@ -282,11 +356,15 @@ means the odd sector lies above the even ground state.
 The v643 script also tests removal of the projected global Fourier zero mode.
 If `e_0` denotes the original `k=0` vector, its pole-neutral projection is
 
-`g_0 = Z_L^* e_0`.
+```math
+g_0=Z_L^{*}e_0
+```
 
 The observer complement is
 
-`E_obs = g_0^perp`.
+```math
+E_{\mathrm{obs}}=g_0^{\perp}
+```
 
 This implements the candidate interpretation of the global compact phase as
 an observer-boundary gauge mode. Gauge-only and gauge-plus-Ward variants are
@@ -298,23 +376,33 @@ The v636–v637 thermofield analysis identifies the controlled connected
 double-winding sector. In the finite translation representation its positive
 quadratic energy is
 
-`C_(2,L) = sum_(p<e^L) ((log p)^2/p)(2I-2 Re T_(2 log p))`.
+```math
+C_{2,L}=\sum_{p<e^L}\frac{(\log p)^2}{p}\left(2I-2\operatorname{Re}T_{2\log p}\right)
+```
 
 The condition `p<e^L` is equivalent to
 
-`2 log p < 2L`.
+```math
+2\log p<2L
+```
 
 For each prime channel,
 
-`2I-2 Re T_a >= 0`,
+```math
+2I-2\operatorname{Re}T_a\ge 0
+```
 
 so
 
-`C_(2,L) >= 0`.
+```math
+C_{2,L}\ge 0
+```
 
 The coefficient is fixed to
 
-`lambda_ROT = 1`.
+```math
+\lambda_{\mathrm{ROT}}=1
+```
 
 It is not optimized against the parity gaps and is not fitted to zeta zeros.
 
@@ -329,7 +417,9 @@ the connected Ward energy.
 
 The candidate metric is
 
-`W_ROT = W_L + Pi_- C_(2,L) Pi_-`.
+```math
+W_{\mathrm{ROT}} = W_L + \Pi_- C_{2,L}\Pi_-
+```
 
 Because `Pi_-` annihilates the even sector, the correction leaves the even
 trial energy unchanged while lifting the dangerous odd sector.
@@ -356,27 +446,37 @@ consequence of adding a positive matrix.
 
 At
 
-`L=3.0`,
+```math
+L=3.0
+```
 
 the baseline gap is
 
-`Delta(W_L) = -1.1515465972426486 x 10^(-3)`,
+```math
+\Delta(W_L)=-1.1515465972426486\times10^{-3}
+```
 
 while ordinary Ward addition gives
 
-`Delta(W_L+C_(2,L)) = -2.8845446665977548 x 10^(-2)`.
+```math
+\Delta(W_L+C_{2,L})=-2.8845446665977548\times10^{-2}
+```
 
 The positive Ward term makes the parity gap **more negative**.
 
 Therefore the relevant mechanism is not
 
-`positive correction => positive gap`.
+```math
+\text{positive correction}\;\Longrightarrow\;\text{positive gap}
+```
 
 ## The symmetry projection is the operative ingredient
 
 For the same calculation, the ROT self-dual completion gives
 
-`Delta(W_L+Pi_-C_(2,L)Pi_-) = 5.698699481755492`.
+```math
+\Delta\!\left(W_L+\Pi_-C_{2,L}\Pi_-\right)=5.698699481755492
+```
 
 The finite data distinguish two statements:
 
@@ -384,7 +484,9 @@ The finite data distinguish two statements:
 
 but
 
-`W_L+Pi_-C_(2,L)Pi_-`
+```math
+W_L+\Pi_-C_{2,L}\Pi_-
+```
 
 is strongly positive in every deepest tested window.
 
@@ -399,11 +501,15 @@ squared-Hamiltonian inertia.
 
 The registered grid uses
 
-`L in {2.5,3.0,3.5,4.0}`
+```math
+L\in\{2.5,3.0,3.5,4.0\}
+```
 
 and
 
-`M in {24,32,40,48}`.
+```math
+M\in\{24,32,40,48\}
+```
 
 At `M=48`:
 
@@ -432,7 +538,9 @@ The registered finite outcomes are:
 
 The preregistered stability gate was
 
-`last-step relative change < 0.02`.
+```math
+\text{last-step relative change}<0.02
+```
 
 Three windows pass. The `L=3.5` value is approximately `0.02011`, slightly
 above the gate. The stored verdict is therefore
@@ -460,7 +568,9 @@ error exponent.
 
 **v602** establishes, for the defined physical observable,
 
-`full physical cutoff zero type <=> RH`.
+```math
+\text{full physical cutoff zero type}\;\Longleftrightarrow\;\mathrm{RH}
+```
 
 This is an equivalence, not an RH proof.
 
@@ -480,7 +590,9 @@ the remaining defect is carried by PNT centering.
 
 **v608** proves the canonical prime coupling is Schatten class
 
-`U-U_free in S_3`.
+```math
+U-U_{\mathrm{free}}\in\mathcal S_3
+```
 
 **v609** closes the double-winding `m=2` sector away from zero energy.
 
@@ -494,59 +606,87 @@ holonomy.
 
 For each prime, set
 
-`r_p=p^(-1/2)`
+```math
+r_p=p^{-1/2}
+```
 
 and
 
-`U_p = [[r_p,sqrt(1-r_p^2)],[sqrt(1-r_p^2),-r_p]]`.
+```math
+U_p=\begin{pmatrix}r_p&\sqrt{1-r_p^2}\\\sqrt{1-r_p^2}&-r_p\end{pmatrix}
+```
 
 The free coupler is
 
-`U_0 = [[0,1],[1,0]]`.
+```math
+U_0=\begin{pmatrix}0&1\\1&0\end{pmatrix}
+```
 
 On the direct sum of prime channels,
 
-`U-U_free in S_3`.
+```math
+U-U_{\mathrm{free}}\in\mathcal S_3
+```
 
 The prime delay generator is
 
-`L_delay e_p = (log p)e_p`,
+```math
+L_{\mathrm{delay}}e_p=(\log p)e_p
+```
 
 with
 
-`Z(E)=exp(i E L_delay)`.
+```math
+Z(E)=e^{iE L_{\mathrm{delay}}}
+```
 
 The exact one-prime transfer is
 
-`Theta_p(z) = (z-r_p)/(1-r_p z)`.
+```math
+\Theta_p(z)=\frac{z-r_p}{1-r_pz}
+```
 
 At
 
-`z_p(E)=exp(iE log p)`,
+```math
+z_p(E)=e^{iE\log p}
+```
 
 the relative scattering channel is
 
-`S_p(E) = (1-r_p exp(-iE log p))/(1-r_p exp(+iE log p))`.
+```math
+S_p(E)=\frac{1-r_pe^{-iE\log p}}{1-r_pe^{+iE\log p}}
+```
 
 For real energy,
 
-`|S_p(E)|=1`.
+```math
+\lvert S_p(E)\rvert=1
+```
 
 The infinite operator obeys
 
-`S(E)-I in S_3`
+```math
+S(E)-I\in\mathcal S_3
+```
 
 and
 
-`sup_(E in R) ||S(E)-S_X(E)||_3 -> 0`.
+```math
+\sup_{E\in\mathbb R}\left\lVert S(E)-S_X(E)\right\rVert_3\longrightarrow0
+```
 
 The tail estimate is
 
-`||S-S_X||_3 = O(X^(-1/6))`.
+```math
+\left\lVert S-S_X\right\rVert_3=O\!\left(X^{-1/6}\right)
+```
 
 Therefore
 
-`det_3 S(E)`
+```math
+\det_3 S(E)
+```
 
 exists as a genuine cutoff-independent modified determinant. This is an
 analytic infinite scattering object, but not yet the final single
@@ -563,36 +703,50 @@ spectral flow.
 
 **v616** considers prime quantiles `p_n` and smooth quantiles `q_n` defined by
 
-`Li(q_n)=n`.
+```math
+\operatorname{Li}(q_n)=n
+```
 
 For
 
-`K_p = diag(1/p_n)`
+```math
+K_p=\operatorname{diag}\!\left(\frac1{p_n}\right)
+```
 
 and
 
-`K_0 = diag(1/q_n)`,
+```math
+K_0=\operatorname{diag}\!\left(\frac1{q_n}\right)
+```
 
 the relative pair satisfies
 
-`K_p-K_0 in S_1`.
+```math
+K_p-K_0\in\mathcal S_1
+```
 
 Its Krein spectral shift is the prime-counting discrepancy.
 
 **v617** identifies the fractional trace threshold with the rightmost-zero
 exponent. The target
 
-`alpha_c=1/2`
+```math
+\alpha_c=\frac12
+```
 
 is RH-equivalent and remains open.
 
 **v618** introduces the critical shell action
 
-`C(Y) = int_Y^(Y+1) |e^(-y/2)(pi(e^y)-Li(e^y))|^2 dy`.
+```math
+C(Y)=\int_Y^{Y+1}\left\lvert e^{-y/2}\left(\pi(e^y)-\operatorname{Li}(e^y)\right)\right\rvert^2\,dy
+```
 
 At exponential scale,
 
-`RH <=> C(Y)=e^(o(Y))`.
+```math
+\mathrm{RH}\;\Longleftrightarrow\;C(Y)=e^{o(Y)}
+```
 
 Equivalent forms include zero positive Hardy-`L^2` Lyapunov exponent,
 square-root Krein-edge regularity, the fractional trace transition at `1/2`,
@@ -604,7 +758,9 @@ and zero positive Gaussian/Fock cutoff type.
 
 **v620** finds a genuine positive localized Selberg contribution of size
 
-`approximately Y C(Y)`,
+```math
+\sim Y\,C(Y)
+```
 
 but proves that the accompanying `P*P` work has both signs and cannot become a
 fixed-positive-metric BPS gradient flow.
@@ -614,7 +770,9 @@ connected logarithmic determinant.
 
 **v622** reduces the unresolved content to the one connected statement
 
-`C(Y)=e^(o(Y))`.
+```math
+C(Y)=e^{o(Y)}
+```
 
 This is a major simplification, but the remaining statement is RH-equivalent.
 
@@ -636,7 +794,9 @@ resonances. The missing theorem must be arithmetic or representation specific.
 
 **v627–v629** close local prime passivity and express the Weil form as
 
-`archimedean input - positive prime dwell energy`.
+```math
+\text{archimedean input}-\text{positive prime dwell energy}
+```
 
 The remaining issue is collective global passivity.
 
@@ -654,7 +814,9 @@ coherence with summable probability-level fluctuation cost.
 
 **v637** proves that connected thermofield cumulants with
 
-`k>=2`
+```math
+k\ge2
+```
 
 are zero type. Only the one-point tadpole remains RH-strength. The controlled
 `k=2` sector supplies the positive Ward energy used in v643.
@@ -668,64 +830,96 @@ separated from detector-level cutoff independence.
 Let `D` be the parity-changing scaling generator and `T` a symmetric Weil
 matrix satisfying
 
-`[D,T] = |beta><eta|-|eta><beta|`.
+```math
+[D,T]=\lvert\beta\rangle\langle\eta\rvert-\lvert\eta\rangle\langle\beta\rvert
+```
 
 Write
 
-`T_+ = T|E_+`
+```math
+T_+=T\vert_{E_+}
+```
 
 and
 
-`T_- = T|E_-`.
+```math
+T_-=T\vert_{E_-}
+```
 
 Let `epsilon_+` be the simple even ground energy with eigenvector `xi`
 normalized by
 
-`<eta,xi>=1`.
+```math
+\langle\eta,\xi\rangle=1
+```
 
 Define
 
-`Q_+ = T_+-epsilon_+ I`,
+```math
+Q_+=T_+-\epsilon_+I
+```
 
-`A = D^2|E_+`,
+```math
+A=D^2\vert_{E_+}
+```
 
-`A' = A-|Axi><eta|`.
+```math
+A'=A-\lvert A\xi\rangle\langle\eta\rvert
+```
 
 Then
 
-`A'xi=0`
+```math
+A'\xi=0
+```
 
 and
 
-`Q_+A' = A'^*Q_+`.
+```math
+Q_+A'=A'^{*}Q_+
+```
 
 Thus `A'` descends to a self-adjoint quotient operator `A''` on
 
-`E_+/Cxi`.
+```math
+E_+/\mathbb C\xi
+```
 
 The exact determinant identity is
 
-`det(A''-z^2) = (-1)^N det(D-z)<eta,(D-z)^(-1)xi>`.
+```math
+\det(A''-z^2)=(-1)^N\det(D-z)\,\langle\eta,(D-z)^{-1}\xi\rangle
+```
 
 Define the corrected supercharge
 
-`Sx = Dx-Dxi<eta,x>`.
+```math
+Sx=Dx-D\xi\langle\eta,x\rangle
+```
 
 With
 
-`Q_- = T_- - epsilon_+ I`,
+```math
+Q_-=T_- -\epsilon_+I
+```
 
 the exact quadratic identity is
 
-`<x,Q_+A'x> = <Sx,Q_-Sx>`.
+```math
+\langle x,Q_+A'x\rangle=\langle Sx,Q_-Sx\rangle
+```
 
 Sylvester inertia gives
 
-`n_-(A'') = number of odd eigenvalues of T below epsilon_+`.
+```math
+n_-(A'')=\#\{\text{odd eigenvalues of }T\text{ below }\epsilon_+\}
+```
 
 Therefore
 
-`Delta_- = lambda_min(T_-)-epsilon_+ > 0`
+```math
+\Delta_-=\lambda_{\min}(T_-)-\epsilon_+>0
+```
 
 is sufficient for nonnegative squared-Hamiltonian inertia. The RH obstruction
 has become an even/odd Weil parity problem.
@@ -734,15 +928,21 @@ has become an even/odd Weil parity problem.
 
 For the prolate concentration operator,
 
-`delta_c = lambda_0(c)-lambda_1(c) > 0`.
+```math
+\delta_c=\lambda_0(c)-\lambda_1(c)>0
+```
 
 Its tunnelling defects satisfy
 
-`(1-lambda_1(c))/(1-lambda_0(c)) approximately kappa c`.
+```math
+\frac{1-\lambda_1(c)}{1-\lambda_0(c)}\sim\kappa c
+```
 
 The transfer inequality is
 
-`Delta(T) >= a_c delta_c - ||R_-|| - |<k_c,R_+k_c>|`.
+```math
+\Delta(T)\ge a_c\delta_c-\lVert R_-\rVert-\left\lvert\langle k_c,R_+k_c\rangle\right\rvert
+```
 
 A Weil-to-prolate mismatch controlled at the even ground-state defect scale
 would therefore force a positive parity gap. That arithmetic remainder
@@ -753,7 +953,9 @@ estimate is not proved.
 v643 introduces the ROT-specific connected Ward energy and locks recursive
 channel exchange to spatial parity:
 
-`W_ROT = W_L+Pi_-C_(2,L)Pi_-`.
+```math
+W_{\mathrm{ROT}}=W_L+\Pi_-C_{2,L}\Pi_-
+```
 
 This directly targets the odd sector isolated by v639. The finite results are
 strong; the structural derivation and infinite/Fredholm consequences remain
@@ -792,22 +994,30 @@ These results do not combine into RH until the open arrows below are closed.
 
 The identification
 
-`ROT channel exchange = spatial reflection Gamma`
+```math
+\text{ROT channel exchange}=\text{spatial reflection }\Gamma
+```
 
 must be derived from the covariant ROT action, observer boundary, or an exact
 Ward identity. The derivation must explain why the completion is exactly
 
-`Pi_-C_(2,L)Pi_-`
+```math
+\Pi_-C_{2,L}\Pi_-
+```
 
 with
 
-`lambda_ROT=1`.
+```math
+\lambda_{\mathrm{ROT}}=1
+```
 
 ## 2. Infinite parity-gap theorem
 
 Finite positive gaps must be promoted to a statement such as
 
-`inf_(L>=L_0) Delta(W_ROT,L) > 0`
+```math
+\inf_{L\ge L_0}\Delta(W_{\mathrm{ROT},L})>0
+```
 
 or a weaker limit theorem sufficient for v639. This requires control of
 `M -> infinity`, `L -> infinity`, the compatibility of the limits, the
@@ -819,11 +1029,15 @@ state.
 The Ward deformation must preserve the target determinant. A sufficient form
 would be
 
-`det_F(H_ROT-z) = E(z) Xi(z)`,
+```math
+\det_{\mathrm F}(H_{\mathrm{ROT}}-z)=E(z)\,\Xi(z)
+```
 
 with
 
-`E(z) != 0`
+```math
+E(z)\ne0
+```
 
 throughout the relevant domain.
 
@@ -1071,27 +1285,33 @@ documented in `docs/RELEASE_QA.md`; no numerical formula was changed.
 
 The focused analytic target is
 
-`ROT action`
-
-`=> exact exchange Ward identity`
-
-`=> Pi_-C_2Pi_- with canonical coefficient`
-
-`=> infinite positive Weil parity gap`
-
-`=> nonnegative v639 squared-SUSY quotient`,
+```math
+\begin{aligned}
+\text{ROT action}
+&\Longrightarrow \text{exact exchange Ward identity}\\
+&\Longrightarrow \Pi_-C_2\Pi_-\text{ with canonical coefficient}\\
+&\Longrightarrow \text{infinite positive Weil parity gap}\\
+&\Longrightarrow \text{nonnegative v639 squared-SUSY quotient}.
+\end{aligned}
+```
 
 together with
 
-`det_F(H_ROT-z) = E(z)Xi(z)`
+```math
+\det_{\mathrm F}(H_{\mathrm{ROT}}-z)=E(z)\,\Xi(z)
+```
 
 and
 
-`E(z) != 0`.
+```math
+E(z)\ne0
+```
 
 If both chains are proved without importing
 
-`C(Y)=e^(o(Y))`
+```math
+C(Y)=e^{o(Y)}
+```
 
 as an assumption, the architecture would have the ingredients needed for a
 genuine Hilbert–Pólya conclusion.
