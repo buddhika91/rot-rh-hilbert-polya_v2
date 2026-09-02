@@ -18,15 +18,15 @@ W_{\mathrm{ROT}} = W_L + \Pi_- C_{2,L}\Pi_-
 
 where
 
-```math
+
 \Pi_- = \frac{I-\Gamma}{2}
-```
+
 
 projects onto the spatial-odd sector and
 
-```math
+
 C_{2,L}=\sum_{p<e^L}\frac{(\log p)^2}{p}\left(2I-2\operatorname{Re}T_{2\log p}\right)\ge 0
-```
+
 
 is the connected double-winding thermofield Ward energy.
 
@@ -97,9 +97,9 @@ The Hilbert–Pólya program seeks a self-adjoint operator `H` whose real spectr
 encodes the imaginary parts of the nontrivial zeros of the Riemann zeta
 function. In an ideal realization,
 
-```math
+
 \operatorname{spec}(H)=\left\{\gamma:\xi\!\left(\frac12+i\gamma\right)=0\right\}
-```
+
 
 and an appropriately regularized spectral determinant satisfies
 
